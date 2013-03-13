@@ -1,5 +1,8 @@
 package servlets;
 
+import itm.SearchDAO;
+import itm.UserBean;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -11,8 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import obj.SearchDAO;
-import obj.UserBean;
 
 /**
  * Este servlet maneja las HTTP requests dirigidas a /search

@@ -1,5 +1,10 @@
 package servlets;
 
+import itm.ReferenceBean;
+import itm.ReferencesDAO;
+import itm.UserBean;
+import itm.UserDAO;
+
 import java.io.IOException;
 import java.util.List;
 
@@ -11,10 +16,6 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 
-import obj.ReferencesDAO;
-import obj.UserDAO;
-import obj.UserBean;
-import obj.ReferenceBean;
 
 /**
  * Este servlet maneja las HTTP requests dirigidas a /perfil

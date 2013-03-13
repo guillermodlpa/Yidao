@@ -1,5 +1,8 @@
 package servlets;
 
+import itm.RecommendationsDAO;
+import itm.UserBean;
+
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,8 +15,6 @@ import javax.servlet.http.HttpSession;
 
 import java.util.List;
 
-import obj.UserBean;
-import obj.RecommendationsDAO;
 
 /**
  * Este servlet maneja las HTTP requests dirigidas a /inicio

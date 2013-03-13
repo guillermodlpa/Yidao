@@ -1,7 +1,8 @@
 package servlets;
 
-import obj.UserBean;
-import obj.UserDAO;
+
+import itm.UserBean;
+import itm.UserDAO;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
