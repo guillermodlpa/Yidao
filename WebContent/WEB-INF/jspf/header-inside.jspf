@@ -1,0 +1,14 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
+			<div id="header">
+				<div>
+					<h1><a href="${pageContext.request.contextPath}/inicio">Yidao</a></h1>
+					<ul>
+						<li><a href="${pageContext.request.contextPath}/inicio">Inicio</a></li>
+						<li><a href="${pageContext.request.contextPath}/perfil">Perfil</a></li>
+						<li><a href="${pageContext.request.contextPath}/mensajes">Mensajes</a></li>
+						<li><a href="${pageContext.request.contextPath}/busqueda">Búsqueda</a></li>
+						<li><a href="${pageContext.request.contextPath}/cuenta">Cuenta</a></li>
+					</ul>
+					<p><a href="${pageContext.request.contextPath}/logout">Logout</a></p>
+				</div>
+			</div>

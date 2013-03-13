@@ -1,0 +1,8 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
+					<div id="footer">
+						<ul>
+							<li><a href="${pageContext.request.contextPath}/about">Sobre nosotros</a></li>
+							<li><a href="${pageContext.request.contextPath}/terms">Términos</a></li>
+							<li><a href="${pageContext.request.contextPath}/contact">Contacto</a></li>
+						</ul>
+					</div>

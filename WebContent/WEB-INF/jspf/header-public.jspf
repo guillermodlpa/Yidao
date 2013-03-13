@@ -1,0 +1,19 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"  %>
+			<div id="header">
+				<div>
+					<form method="post" action="${pageContext.request.contextPath}/login">
+						<ul>
+							<li>
+								<label for="username">Usuario:</label>
+								<input id="username" name="username"/>
+							</li>
+							<li>
+								<label for="password">Contraseña:</label>
+								<input type="password" id="password" name="password"/>
+							</li>
+						</ul>
+						<input class="submit small-button" type="submit" value="Login"/>
+					</form>
+					<h1><a href="${pageContext.request.contextPath}/index">Yidao</a></h1>
+				</div>
+			</div>

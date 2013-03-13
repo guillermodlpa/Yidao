@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE urlrewrite
+    PUBLIC "-//tuckey.org//DTD UrlRewrite 4.0//EN"
+    "http://www.tuckey.org/res/dtds/urlrewrite4.0.dtd">
+    
+    
+<!-- 
+
+	URLRewrite sirve para redireccionar en el servidor
+	Si llega una petición a una URL que cumpla una de las reglas indicadas, 
+	se redirige a lo que se indique en <to>, por ejemplo, un servlet o una página JSP
+	
+	Nos sirve para ocultar las páginas .jsp de su acceso directo, obligando a pasar por Servlet
+	También nos sirve para tomar parte de la URL y pasar alguna parte a parámetro, antes de mandarlo a un Servlet:
+	    por ejemplo, perfil/gpuenteallott
+
+ -->
+
+<urlrewrite>
+
+	<rule>
+        <from>^/$</from>
+        <to>/index</to>
+    </rule>
+
+	<!-- que /login nos lleve al servlet que corresponde, el de manejo de login -->
+    <rule>
+        <from>^/login$</from>
+        <condition type="method">POST</condition>
+        <to>/servlets/LoginServlet</to>
+        <set name="action">login</set>
+    </rule>
+    <!-- que /sendMessage nos lleve al servlet que corresponde, el de manejo de mailbox -->
+    <rule>
+        <from>^/enviarMensaje$</from>
+        <condition type="method">POST</condition>
+        <to>/servlets/MailboxServlet</to>
+        <set name="action">sendMessage</set>
+    </rule>
+    <!-- que /perfil /cuenta /mensajes /inicio y /busqueda nos lleve al servlet de acceso al perfil de usuario -->
+    <rule>
+        <from>^/perfil/?$</from>
+        <to>/servlets/ProfileServlet</to>
+    </rule>
+    <rule>
+        <!--<from>^/perfil/([a-z0-9_-%]+)$</from>-->
+        <from>^/perfil/([a-z0-9_-]+)$</from>
+        <set type="parameter" name="username">$1</set>
+        <to>/servlets/ProfileServlet</to>
+    </rule>
+    <rule>
+        <from>^/cuenta/?$</from>
+        <to>/servlets/SettingsServlet</to>
+    </rule>
+    <rule>
+        <from>^/busqueda/?$</from>
+        <to>/servlets/SearchServlet</to>
+    </rule>
+    <rule>
+        <from>^/busqueda/(.+)$</from>
+        <set type="parameter" name="search-input-url">$1</set>
+        <to>/servlets/SearchServlet</to>
+    </rule>
+    <rule>
+        <from>^/mensajes/?$</from>
+        <to>/servlets/MailboxServlet</to>
+    </rule>
+    <rule>
+        <from>^/inicio/?$</from>
+        <to>/servlets/InicioServlet</to>
+    </rule>
+    <rule>
+        <from>^/index/?$</from>
+        <to>/servlets/IndexServlet</to>
+    </rule>
+    
+    
+    <!--  páginas estáticas -->
+    <rule>
+        <from>^/about/?$</from>
+        <to>/servlets/StaticPagesServlet</to>
+        <set name="action">about</set>
+    </rule>
+    <rule>
+        <from>^/terms/?$</from>
+        <to>/servlets/StaticPagesServlet</to>
+        <set name="action">terms</set>
+    </rule>
+    <rule>
+        <from>^/contact/?$</from>
+        <to>/servlets/StaticPagesServlet</to>
+        <set name="action">contact</set>
+    </rule>
+    
+    
+    <!-- Páginas que queremos ocultar -->
+    <rule>
+        <from>^/login$</from>
+        <condition type="method" operator="notequal">POST</condition>
+        <to>404</to>
+    </rule>
+    <rule>
+        <from>^/enviarMensaje$</from>
+        <condition type="method" operator="notequal">POST</condition>
+        <to>404</to>
+    </rule>
+    <rule>
+        <from>^/servlets/LoginServlet$</from>
+        <condition type="method" operator="notequal">POST</condition>
+        <to>404</to>
+    </rule>
+
+
+</urlrewrite>
