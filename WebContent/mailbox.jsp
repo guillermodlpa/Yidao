@@ -24,10 +24,10 @@
 
 	<head>
         <meta charset="utf-8"/>
-        <link rel="stylesheet" href="css/inside.css"/>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/inside.css"/>
         <link href='http://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'/>
-        <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
-        <script type="text/javascript" src="js/yidao.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/yidao.js"></script>
         <title>Yidao - Mensajes</title>
     </head>
     
@@ -50,10 +50,8 @@
 								<div class="conversation conversation-closed">
 									<button class="show-button"></button>
 									
-									
-									<a href=""><img class="msg-profile" src=""></a>
-									<a href=""><img class="msg-delete" src=""></a>
-									<p class="msg-date">${ cvr.timestamp }</p>
+									<a href=""><img class="msg-delete" src="${pageContext.request.contextPath}/img/delete.png"></a>
+									<p class="msg-date">${ cvr.stimestamp }</p>
 									<a href="${pageContext.request.contextPath}/perfil/${ cvr.other_user_bean.username }">
 										<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ cvr.other_user_bean.username }.jpg">
 									</a>
@@ -78,7 +76,7 @@
 												
 												<p>${ msg.content }</p>
 												<form method="post" action="enviarMensaje">
-													<textarea name="respuesta" title="Escribe aquí tu respuesta">Escribe aquí tu respuesta...</textarea>
+													<textarea name="respuesta" title="Escribe aquí tu respuesta"></textarea>
 													<input type="submit" class="button" value="Enviar"/>
 													<input type="hidden" name="conversation-id" value="${cvr.id }"/>
 													<input type="hidden" name="other-user-id" value="${cvr.other_user_bean.id }"/>
@@ -102,9 +100,8 @@
 													</c:if>
 													
 													<%-- La variable sender contiene los datos del usuario que envía, sea el que ha hecho login o el otro --%>
-													<a href=""><img class="msg-profile" src=""></a>
-													<a href=""><img class="msg-delete" src=""></a>
-													<p class="msg-date">${ msg.timestamp }</p>
+													<a href=""><img class="msg-delete" src="${pageContext.request.contextPath}/img/delete.png"></a>
+													<p class="msg-date">${ msg.stimestamp }</p>
 													<a href="${pageContext.request.contextPath}/perfil/${ sender.username }">
 														<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ sender.username }.jpg">
 													</a>

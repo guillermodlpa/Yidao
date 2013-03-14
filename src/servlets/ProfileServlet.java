@@ -47,6 +47,7 @@ public class ProfileServlet extends HttpServlet {
 		if(session.getAttribute("currentSessionUser") != null )
 			currentUserUsername = ( (UserBean)session.getAttribute("currentSessionUser") ).getUsername();
 		
+		// Si la ruta ha sido "perfil/username" y es un usuario diferente a nosotros mismos 
 		if( username != null && !username.equals(currentUserUsername) ) {
 
 			UserBean user = new UserBean();
@@ -72,18 +73,33 @@ public class ProfileServlet extends HttpServlet {
 				RequestDispatcher dispatcher = contexto.getRequestDispatcher("/profile.jsp");
 				dispatcher.forward(request, response);
 			}
-			
-		} else if (username != null && username.equals(currentUserUsername) ) { 
-			
-			response.sendRedirect(request.getContextPath()+"/perfil");
+		} 
 		
-		} else {
+		// Caso en el que la ruta es "perfil/username" y username es el nombre del usuario que ha hecho login
+		else if (username != null && username.equals(currentUserUsername) ) { 
+			
+			// Utilizado para comprobar si el perfil es del usuario loggeado o no
+			request.setAttribute("isLoggedUser", true );
+			response.sendRedirect(request.getContextPath()+"/perfil");
+		}
+		
+		// Si la sesión ha expirado, que "/perfil" nos redirija. Si no, cargaría un perfil vacío
+		else if ( currentUserUsername.equals("") ) {
+			
+			response.sendRedirect(request.getContextPath()+"/index");
+		}	
+		
+		// Caso habitual en el que el usuario que ha hecho login ve su propio perfil
+		else {
 			
 			session = request.getSession();	    
 			request.setAttribute("user", session.getAttribute("currentSessionUser") );
 			
 			List<ReferenceBean> references = ReferencesDAO.getReferences( (UserBean)session.getAttribute("currentSessionUser") );
 			request.setAttribute("references",references);
+			
+			// Utilizado para comprobar si el perfil es del usuario loggeado o no
+			request.setAttribute("isLoggedUser", true );
 			
 			ServletContext contexto = getServletContext();
 			request.setAttribute("servlet",true);

@@ -19,6 +19,8 @@
         <meta charset="utf-8"/>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/css/inside.css"/>
         <link href='http://fonts.googleapis.com/css?family=Clicker+Script' rel='stylesheet' type='text/css'/>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-1.8.3.min.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/yidao.js"></script>
         <title>Yidao - Perfil</title>
     </head>
     
@@ -40,13 +42,20 @@
 				<div id="central">
 				
 					<div id="colIzquierda">
+					
 						<div>	<!-- INFORMACIÓN  DE USUARIO -->
 							<div class="box-header">
 								<p>Información de usuario</p>
 							</div>
 							<div class="box-content">
-								<img id="profile-status" src="" title="Tengo tiempo para intercambios"/>
-								<img id="profile-send" src="" title="Enviar un mensaje"/>
+							
+								<%-- Si el usuario tiene activo el estado, lo mostramos --%>
+								<%--<img id="profile-status" src="" title="Tengo tiempo para intercambios"/> --%>
+								
+								<%-- Si el ususario de este perfil no es el usuario que ha hecho login, mostramos el botón --%>
+								<c:if test="${ not isLoggedUser eq true }">
+									<img id="profile-send" src="${pageContext.request.contextPath}/img/message.png" title="Enviar un mensaje"/>
+								</c:if>
 								<div>
 									<p id="profile-name">${ user.firstName } ${ user.lastName }</p>
 									<img id="profile-img" src="${pageContext.request.contextPath}/img/profile/${ user.username }.jpg"/>
@@ -64,7 +73,10 @@
 									<p id="bio">${ user.bio }</p>
 								</c:if>
 								
-								<p class="p-center"><a href="" class="button">Enviar mensaje</a></p>
+								<%-- Si el ususario de este perfil no es el usuario que ha hecho login, mostramos el botón --%>
+								<c:if test="${ not isLoggedUser eq true }">
+									<p class="p-center"><input type="button" id="send-button" class="button" value="Enviar mensaje"/></p>
+								</c:if>
 								
 							</div>
 						</div>
@@ -177,7 +189,21 @@
 					
 				</div>
 				
-			</div>			
+			</div>		
+			
+			
+			<%-- Envío de mensaje a usuario --%>
+			
+			<div id="new-message-box" class="hidden">
+				<img src="${pageContext.request.contextPath}/img/white_cross.png" id="new-message-close"/>
+				<p>Mensaje para ${ user.firstName } ${ user.lastName }</p>
+				<form method="post" action="${pageContext.request.contextPath}/enviarMensaje">
+					<textarea name="respuesta" title="Escribe aquí tu mensaje"></textarea>
+					<input type="hidden" name="other-user-id" value="${user.id }"/>
+					<p class="p-center"><input type="submit" class="button" value="Enviar"/></p>
+				</form>
+			</div>
+				
 		</div>			
 	</body>
 </html>

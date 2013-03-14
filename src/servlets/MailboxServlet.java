@@ -55,15 +55,16 @@ public class MailboxServlet extends HttpServlet {
 						&& request.getParameter("respuesta") != null) 
 				{
 					long conversationId = -1;
-					if (request.getParameter("conversation-id") != null ) {
+					if (request.getParameter("conversation-id") != null )
 						conversationId = Long.parseLong( request.getParameter("conversation-id") );
-					}
+					
 					
 					// Si exito es false, que se presente un mensaje de error al usuario
 					boolean exito = MessagesDAO.sendMessage( currentUser, 
 						                                     conversationId, 
 											                 Long.parseLong(request.getParameter("other-user-id")), 
 							                                 request.getParameter("respuesta") );
+					
 					
 					response.sendRedirect(request.getContextPath()+"/mensajes");
 				}

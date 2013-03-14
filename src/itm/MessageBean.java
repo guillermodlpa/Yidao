@@ -1,6 +1,7 @@
 package itm;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -11,6 +12,7 @@ import java.util.Date;
 public class MessageBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	private static final SimpleDateFormat timestampFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	private Long id;
 	
@@ -22,10 +24,17 @@ public class MessageBean implements Serializable{
 	private String content;
 	private String summary;   //primeras palabras del contenido
 	private Date timestamp;
+	private String stimestamp;
 	
 
 	
-    public String getSummary() {
+    public String getStimestamp() {
+		return stimestamp;
+	}
+	public void setStimestamp(String stimestamp) {
+		this.stimestamp = stimestamp;
+	}
+	public String getSummary() {
 		return summary;
 	}
 	public void setSummary(String summary) {
@@ -61,6 +70,8 @@ public class MessageBean implements Serializable{
 	}
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
+		if (timestamp != null)
+			this.stimestamp = timestampFormat.format( (java.util.Date)timestamp );
 	}
 	public static long getSerialversionuid() {
 		return serialVersionUID;

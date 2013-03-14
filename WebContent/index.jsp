@@ -46,9 +46,10 @@
 			
 				<div id="central"> <!-- div central que contiene los dos divs que ocupan la mitad -->
 					<div class="left">
+						
+						<p>Red social para unir personas que quieren aprender y enseñar conocimientos</p>
+						<p>Queda, aprende, enseña y crece</p>
 						<h2>Sapere Aude</h2>
-						<p>Aprende, enseña y crece</p>
-						<p>Red social para el intercambio gratuito de conocimientos y habilidades entre personas</p>
 					</div>
 					
 					<div class="right">

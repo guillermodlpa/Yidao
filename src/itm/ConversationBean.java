@@ -1,6 +1,7 @@
 package itm;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -15,6 +16,7 @@ import java.util.Stack;
 public class ConversationBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	private static final SimpleDateFormat timestampFormat = new SimpleDateFormat("dd / MM / yyyy - HH:mm");
 	
 	// La id de conversación coincide con la id del mensaje primero
 	private Long id;
@@ -22,6 +24,7 @@ public class ConversationBean implements Serializable{
 	private UserBean other_user_bean;
 	private Date timestamp;
 	private String last_summary;
+	private String stimestamp;
 	
 	// Usamos Stack porque es una cola LIFO last in first out
 	private List<MessageBean> messages; //Objeto mensaje de respuesta a este mensaje
@@ -41,7 +44,7 @@ public class ConversationBean implements Serializable{
 	    addMessage(mensaje_primero);
 		this.self_user_id = self_user_id;
 		this.other_user_bean = other_user_bean;
-		this.timestamp = mensaje_primero.getTimestamp();
+		this.setTimestamp( mensaje_primero.getTimestamp() );
 		this.last_summary = mensaje_primero.getSummary();
 	}
 	
@@ -55,12 +58,18 @@ public class ConversationBean implements Serializable{
 		if (this.id == null && message.getId() != -1)
 			this.id = message.getId();
 		messages.add(0,message);
-		this.timestamp = message.getTimestamp();
+		this.setTimestamp( message.getTimestamp() );
 		this.last_summary = message.getSummary();
 		//System.out.println("Mensaje "+message.getId()+"añadido a la conversación "+ id);
 	}
+
 	
-	
+    public String getStimestamp() {
+		return stimestamp;
+	}
+	public void setStimestamp(String stimestamp) {
+		this.stimestamp = stimestamp;
+	}
 	public String getLast_summary() {
 		return last_summary;
 	}
@@ -72,6 +81,8 @@ public class ConversationBean implements Serializable{
 	}
 	public void setTimestamp(Date timestamp) {
 		this.timestamp = timestamp;
+		if (timestamp != null)
+			this.stimestamp = timestampFormat.format( timestamp );
 	}
 	public Long getId() {
 		return id;

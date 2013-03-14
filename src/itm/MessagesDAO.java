@@ -52,7 +52,7 @@ public class MessagesDAO {
 				
 				MessageBean b = new MessageBean();
 				b.setId( rs.getLong("idmessages") );
-				b.setTimestamp( rs.getDate("timestamp") );
+				b.setTimestamp( rs.getTimestamp("timestamp") );
 				b.setContent( rs.getString("content") );
 				
 				// Summary son las primeras palabras del mensaje
@@ -83,17 +83,19 @@ public class MessagesDAO {
 				// Comprobamos si este mensaje es original o una respuesta a una conversación existente
 				// En caso de ser una nueva conversación, la creamos
 				if ( b.getAnswerId() == -1 )
-					conversations.add( new ConversationBean (currentUser.getId(), other_user ,b) );
+					conversations.add(0, new ConversationBean (currentUser.getId(), other_user ,b) );
 					
 				else {
 					// Si el mensaje es una respuesta, tendrá una conversación ya existente en la lista conversations
-					for (ConversationBean r : conversations){
+					for (int i = 0; i < conversations.size(); i++){
 						// La id de los objetos ConversationBean se corresponde con la id del primer mensaje que contienen
-						if ( b.getAnswerId() == r.getId() ){
+						if ( b.getAnswerId() == conversations.get(i).getId() ){
 							//El mensaje respuesta se añade como atributo a la lista de respuestas del mensaje padre
 							//De esta forma queda incluído en la lista de mensajes
 							//Suponemos que los mensajes obtenidos de la BBDD se recuperan en orden cronológico
-							r.addMessage(b);
+							conversations.get(i).addMessage(b);
+							// Reordenamos dinámicamente la lista. Probablemente es mala estrategia por coste computacional
+							conversations.add(0, conversations.remove(i) );
 							
 						}
 					}

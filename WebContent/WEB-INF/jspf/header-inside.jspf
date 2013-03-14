@@ -5,8 +5,8 @@
 					<ul>
 						<li><a href="${pageContext.request.contextPath}/inicio">Inicio</a></li>
 						<li><a href="${pageContext.request.contextPath}/perfil">Perfil</a></li>
-						<li><a href="${pageContext.request.contextPath}/mensajes">Mensajes</a></li>
 						<li><a href="${pageContext.request.contextPath}/busqueda">Búsqueda</a></li>
+						<li><a href="${pageContext.request.contextPath}/mensajes">Mensajes</a></li>
 						<li><a href="${pageContext.request.contextPath}/cuenta">Cuenta</a></li>
 					</ul>
 					<p><a href="${pageContext.request.contextPath}/logout">Logout</a></p>

@@ -131,7 +131,7 @@ body{
 	float:left;
 	width:45%;
 	text-align:right;
-	font-size:120%;
+	font-size:130%;
 	font-family:"Arial",sans-serif;
 }
 #central .left p, #central .left h2{
@@ -146,6 +146,7 @@ h2{
 	font-weight:normal;
 	text-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
 }
+
 
 /** ESTILO DEL CONTENIDO*/
 
