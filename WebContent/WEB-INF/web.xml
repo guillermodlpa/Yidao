@@ -3,7 +3,7 @@
   <display-name>Yidao</display-name>
   <filter>
     <filter-name>UTF8Filter</filter-name>
-    <filter-class>obj.UTF8Filter</filter-class>
+    <filter-class>itm.UTF8Filter</filter-class>
     <init-param>
       <param-name>requestEncoding</param-name>
       <param-value>UTF-8</param-value>
