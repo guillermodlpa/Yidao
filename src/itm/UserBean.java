@@ -11,6 +11,10 @@ import java.util.Date;
 public class UserBean implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	/**
+	 * Atributo que identifica el nombre de imagen por defecto a mostrar para identificar al usuario
+	 */
+	private static final String DEFAULT_PIC_NAME = "a";
 	
 	private boolean valid;
 	
@@ -23,6 +27,8 @@ public class UserBean implements Serializable{
     private String region;
     private String bio;
     private Date birthday;
+    private int nreferences;
+    private String picture;
     
     private String teach1_title;
     private String teach1_text;
@@ -50,7 +56,22 @@ public class UserBean implements Serializable{
     private String learn6_text;
     
     
-    public String getPassword() {
+    public static String getDefaultPicName(){
+    	return DEFAULT_PIC_NAME;
+    }
+    public String getPicture() {
+		return picture;
+	}
+	public void setPicture(String picture) {
+		this.picture = picture;
+	}
+	public int getNreferences() {
+		return nreferences;
+	}
+	public void setNreferences(int nreferences) {
+		this.nreferences = nreferences;
+	}
+	public String getPassword() {
 		return password;
 	}
     public Date getBirthday() {

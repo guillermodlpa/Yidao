@@ -53,7 +53,7 @@
 									<a href=""><img class="msg-delete" src="${pageContext.request.contextPath}/img/delete.png"></a>
 									<p class="msg-date">${ cvr.stimestamp }</p>
 									<a href="${pageContext.request.contextPath}/perfil/${ cvr.other_user_bean.username }">
-										<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ cvr.other_user_bean.username }.jpg">
+										<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ cvr.other_user_bean.picture }.jpg">
 									</a>
 									<p><a href="${pageContext.request.contextPath}/perfil/${ cvr.other_user_bean.username }">${ cvr.other_user_bean.firstName } ${ cvr.other_user_bean.lastName }</a></p>
 									
@@ -70,7 +70,7 @@
 												<%-- Si el último mensaje de la conversación es del usuario que ha hecho login, mostramos su foto --%>
 												<c:if test="${ cvr.self_user_id eq msg.idSender }">
 													<a href="${pageContext.request.contextPath}/perfil/${ currentSessionUser.username }">
-														<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ currentSessionUser.username }.jpg">
+														<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ currentSessionUser.picture }.jpg">
 													</a>
 												</c:if>
 												
@@ -103,7 +103,7 @@
 													<a href=""><img class="msg-delete" src="${pageContext.request.contextPath}/img/delete.png"></a>
 													<p class="msg-date">${ msg.stimestamp }</p>
 													<a href="${pageContext.request.contextPath}/perfil/${ sender.username }">
-														<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ sender.username }.jpg">
+														<img class="msg-img" src="${pageContext.request.contextPath}/img/profile/${ sender.picture }.jpg">
 													</a>
 													<p><a href="${pageContext.request.contextPath}/perfil/${ sender.username }">${ sender.firstName } ${ sender.lastName }</a></p>
 													<p class="summary">${ msg.summary }</p>

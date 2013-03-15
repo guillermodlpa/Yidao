@@ -437,7 +437,7 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 	cursor:pointer;
 	text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
 }
-.button:hover{
+.button:hover, .small-button:hover{
 	-webkit-box-shadow: inset 0px 0px 7px 0px rgba(100, 100, 100, 1);
 	box-shadow: inset 0px 0px 7px 0px rgba(100, 100, 100, 1);
 }
@@ -445,7 +445,8 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 .small-button{
 	-webkit-border-radius: 3px;
 	border-radius: 3px;
-	background-color:#25BF0A;
+	/*background-color:#25BF0A;*/
+	background-image: url('../img/button.png');
 	font-weight:bold;
 	-webkit-box-shadow: 1px 1px 1px rgba(40, 40, 40, 0.2);
 	-moz-box-shadow:    1px 1px 1px rgba(40, 40, 40, 0.2);
@@ -458,6 +459,7 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 	border-right-color:#265713;
 	padding:3px 5px;
 	color:#fff;
+	text-shadow: 0px 0px 2px rgba(0, 0, 0, 1);
 }
 
 
@@ -547,6 +549,7 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 .settings-box.form-box>div{
 	max-width:80%;
 	margin-left:10%;
+	clear:both;
 }
 .settings-box.form-box>div>div{
 	float:left;
@@ -578,6 +581,8 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 	-webkit-border-radius: 4px;
 	border-radius: 4px;
 }
+
+
 .settings-box p{
 	margin-bottom:18px;
 }
@@ -618,14 +623,13 @@ textarea:focus, #complete-profile-input:focus, #search-input:focus, .atributo:fo
 	border-radius: 4px;
 }
 
-
-
-.profile-status{
-	float:left;
-	background-color:green;
-	width:25px;
-	height:25px;
-	margin-right:5px;
+#settings-nav{
+	text-align:center;
+	margin-bottom: 20px;
+}
+#settings-nav li{
+	display:inline;
+	margin:0 1%;
 }
 
 /** INICIO */

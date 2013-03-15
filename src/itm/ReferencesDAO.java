@@ -46,6 +46,10 @@ public class ReferencesDAO {
 				sender.setFirstName (rs.getString("firstname") );
 				sender.setLastName( rs.getString("lastname") );
 				sender.setRegion( rs.getString("region") );
+				if ( rs.getInt("picture") == 0)
+					sender.setPicture( UserBean.getDefaultPicName() );
+				else 
+					sender.setPicture( sender.getUsername() );
 				b.setSender( sender );
 				
 				b.setExchange( rs.getInt("exchange") != 0 );  //Con eso convertimos int{0,1} a boolean{false,true}

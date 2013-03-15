@@ -11,7 +11,6 @@ import java.util.List;
  */
 
 public class SearchDAO {
-
 		
 	static Connection currentCon = null;
 	static ResultSet rs = null;
@@ -23,7 +22,9 @@ public class SearchDAO {
 		//preparing some objects for connection 
 		PreparedStatement stmt = null;    
 		
-		String searchQuery = "SELECT * FROM users WHERE teach1_title = ? or teach2_title = ? or teach3_title = ?";
+		String searchQuery = "SELECT idusers, username, firstname, lastname, region, nrefs, bio, birthday, teach1_title, teach1_text, teach2_title, teach2_text, teach3_title, teach3_text " +
+				"FROM users " +
+				"WHERE ( teach1_title = ? or teach2_title = ? or teach3_title = ? ) ";
 		    
 		try {
 			//connect to DB 
@@ -41,6 +42,12 @@ public class SearchDAO {
 				u.setLastName( rs.getString("lastname") );
 				u.setUsername( rs.getString("username") );
 				u.setRegion( rs.getString("region") );
+				
+				u.setNreferences( rs.getInt( "nrefs" ) ); //Debe ser la última columna la de las referencias
+				if ( rs.getInt("picture") == 0)
+					u.setPicture( UserBean.getDefaultPicName() );
+				else 
+					u.setPicture( u.getUsername() );
 				
 				if (rs.getString("teach1_title").equalsIgnoreCase( searchInput)  ) {
 					u.setTeach1_title( rs.getString("teach1_title") );

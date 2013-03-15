@@ -53,7 +53,7 @@ public class ProfileServlet extends HttpServlet {
 			UserBean user = new UserBean();
 			user.setUsername(username);
 
-			user = UserDAO.getUser(user,false);
+			user = UserDAO.getUser(user,false); // para obtener los datos del usuario
 			request.setAttribute("user", user);
 			
 			if (user.getId() == null){

@@ -44,7 +44,7 @@
 							</div>
 
 							<div class="box-content" id="news">
-								<a href="${pageContext.request.contextPath}/perfil"><img src="img/profile/${ currentSessionUser.username }.jpg"/></a>
+								<a href="${pageContext.request.contextPath}/perfil"><img src="img/profile/${ currentSessionUser.picture }.jpg"/></a>
 								<p>Hola ${ currentSessionUser.firstName }</p>
 								<p>Sin novedades desde la última visita</p>
 							</div>
@@ -91,7 +91,7 @@
 									<div>
 										<div>
 											<p><a href="${pageContext.request.contextPath}/perfil/${ user.username }">${ user.firstName } ${ user.lastName }</a></p>
-											<a href="${pageContext.request.contextPath}/perfil/${ user.username }"><img src="img/profile/${ user.username }.jpg"></a>
+											<a href="${pageContext.request.contextPath}/perfil/${ user.username }"><img src="img/profile/${ user.picture }.jpg"></a>
 											<p><a class="zhidao" href="${pageContext.request.contextPath}/busqueda/${ user.teach1_title }">${ user.teach1_title }</a></p>
 											</br>
 										</div>

@@ -34,6 +34,11 @@ public class SearchServlet extends HttpServlet {
     }
 
 	/**
+	 * El método get sucede al introducir una url del tipo /busqueda/<término a buscar>
+	 * Simplemente se recupera el término a buscar y se ejecuta la búsqueda tal y como se haría en el doPost
+	 * 
+	 * Si no hay término a buscar, simplemente se está cargando la vista de búsqueda
+	 * 
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -60,6 +65,9 @@ public class SearchServlet extends HttpServlet {
 	}
 
 	/**
+	 * Debemos recoger el término de búsqueda y adaptarlo
+	 * Una vez hecho, llamamos a la lógica de búsqueda, la cual nos devuelve unos resultados que son los que pasamos a la vista
+	 * 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

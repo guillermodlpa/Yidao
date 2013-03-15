@@ -80,6 +80,11 @@ public class MessagesDAO {
 				other_user.setLastName( rs.getString("lastname") );
 				other_user.setRegion( rs.getString("region") );
 				
+				if ( rs.getInt("picture") == 0)
+					other_user.setPicture( UserBean.getDefaultPicName() );
+				else 
+					other_user.setPicture( other_user.getUsername() );
+				
 				// Comprobamos si este mensaje es original o una respuesta a una conversación existente
 				// En caso de ser una nueva conversación, la creamos
 				if ( b.getAnswerId() == -1 )

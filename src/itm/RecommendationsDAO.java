@@ -44,6 +44,11 @@ public class RecommendationsDAO {
 				u.setLastName( rs.getString("lastname") );
 				u.setTeach1_title( rs.getString("teach1_title") );
 				u.setUsername( rs.getString("username") );
+				if ( rs.getInt("picture") == 0)
+					u.setPicture( UserBean.getDefaultPicName() );
+				else 
+					u.setPicture( u.getUsername() );
+				
 				
 				recommendations.add(u);
 				i++;

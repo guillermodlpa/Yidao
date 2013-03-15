@@ -51,7 +51,7 @@
 							<div id="search-filters">
 								<div>
 									<p><input type="radio" name="location" id="filter-location-all" value="all"/> <label for="filter-location-all">Todos</label></p>
-									<p><input type="radio" name="location" id="filter-location-local" value="local"/> <label for="filter-location-local">Sólo en mi provincia</label></p>
+									<p><input type="radio" name="location" id="filter-location-local" value="local"/> <label for="filter-location-local">Sólo en mi área</label></p>
 								</div>
 							</div>
 							
@@ -65,12 +65,12 @@
 										<a href="${pageContext.request.contextPath}/perfil/${ user.username }" class="button">Ver perfil completo</a>
 										<p><a href="${pageContext.request.contextPath}/perfil/${ user.username }">${ user.firstName } ${ user.lastName }</a></p>
 										
-										<a href="${pageContext.request.contextPath}/perfil/${ user.username }"><img src="${pageContext.request.contextPath}/img/profile/${ user.username }.jpg"/></a>
+										<a href="${pageContext.request.contextPath}/perfil/${ user.username }"><img src="${pageContext.request.contextPath}/img/profile/${ user.picture }.jpg"/></a>
 										<div>
 											<p class="info">${ user.region }</p>
 											<p><span class="zhidao">${ user.teach1_title }</span> ${ user.teach1_text }</p>
 										</div>
-										<a class="info search-result-ref" href="${pageContext.request.contextPath}/perfil/${ user.username }">5 referencias</a>
+										<a class="info search-result-ref" href="${pageContext.request.contextPath}/perfil/${ user.username }">${ user.nreferences } referencias</a>
 									</div>
 								</c:forEach>
 							</div>

@@ -11,7 +11,6 @@ import java.sql.PreparedStatement;
  */
 
 public class UserDAO {
-	
 		
 	static Connection currentCon = null;
 	static ResultSet rs = null;
@@ -68,6 +67,11 @@ public class UserDAO {
 				bean.setRegion( rs.getString("region") );
 				bean.setBio( rs.getString("bio") );
 				bean.setBirthday( rs.getDate("birthday") );
+				
+				if ( rs.getInt("picture") == 0)
+					bean.setPicture( UserBean.getDefaultPicName() );
+				else 
+					bean.setPicture( username );
 				
 				bean.setTeach1_title( rs.getString("teach1_title") );
 				bean.setTeach1_text( rs.getString("teach1_text") );

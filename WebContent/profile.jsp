@@ -58,7 +58,7 @@
 								</c:if>
 								<div>
 									<p id="profile-name">${ user.firstName } ${ user.lastName }</p>
-									<img id="profile-img" src="${pageContext.request.contextPath}/img/profile/${ user.username }.jpg"/>
+									<img id="profile-img" src="${pageContext.request.contextPath}/img/profile/${ user.picture }.jpg"/>
 								</div>
 								
 								<p>Usuario: ${ user.username }</p>
@@ -165,7 +165,7 @@
 								<c:forEach items="${references}" var="reference">
 									<div class="ref">
 										<div class="ref-img" >
-											<a href="${pageContext.request.contextPath}/perfil/${ reference.sender.username }"><img src="${pageContext.request.contextPath}/img/profile/${reference.sender.username}.jpg"></a>
+											<a href="${pageContext.request.contextPath}/perfil/${ reference.sender.username }"><img src="${pageContext.request.contextPath}/img/profile/${reference.sender.picture}.jpg"></a>
 										</div>
 										<div class="ref-text">
 											<p class="msg-date">${ reference.timestamp }</p>
