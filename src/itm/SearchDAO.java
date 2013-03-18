@@ -22,7 +22,7 @@ public class SearchDAO {
 		//preparing some objects for connection 
 		PreparedStatement stmt = null;    
 		
-		String searchQuery = "SELECT idusers, username, firstname, lastname, region, nrefs, bio, birthday, teach1_title, teach1_text, teach2_title, teach2_text, teach3_title, teach3_text " +
+		String searchQuery = "SELECT idusers, username, firstname, lastname, region, nrefs, picture, bio, birthday, teach1_title, teach1_text, teach2_title, teach2_text, teach3_title, teach3_text " +
 				"FROM users " +
 				"WHERE ( teach1_title = ? or teach2_title = ? or teach3_title = ? ) ";
 		    
